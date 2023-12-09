@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/cor.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/output.css" />
+    <link rel="stylesheet" href="css/clock.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="fontello-59bdcb39/css/fontello.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> -->
+    <link rel="stylesheet" href="fontello-c24c9de2/css/fontello.css">
+    <style>
+        * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .salam {
+      width: 100%;
+      height: 100vh;
+      background-image: linear-gradient(45deg,
+          rgb(107, 21, 21),
+          rgb(246, 227, 132));
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .gallery {
+      width: 500px;
+      height: 500px;
+      /* border: 2px solid red; */
+      position: relative;
+      border-radius: 50%;
+    }
+
+    .gallery:hover>img {
+      transform: translate(0px, 0px);
+    }
+
+    .gallery>img {
+      /* marin: 5px 5px; */
+      width: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      height: 100%;
+      /* transform: translate(0,0); */
+      /* border-radius: 50%; */
+      /* margin: 100px auto; */
+      /* border: 2px solid red; */
+      clip-path: polygon(0 0,
+          0% 0,
+          0% 0,
+          0% 0,
+          50% 50%,
+          0% 100%,
+          0% 100%,
+          0% 100%,
+          0 100%,
+          0 50%);
+      z-index: 0;
+      transition: transform .4s, clip-path .4s .4s, z-index 1s;
+      position: absolute;
+      /* left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%); */
+    }
+
+    .gallery>img:hover {
+      clip-path: polygon(0 0,
+          20% 0,
+          100% 0,
+          100% 50%,
+          50% 50%,
+          100% 50%,
+          100% 100%,
+          20% 100%,
+          0 100%,
+          0 50%);
+
+
+      z-index: 99;
+    }
+
+    .gallery>img:nth-of-type(4) {
+      transform: translate(10px, 0px) rotate(180deg);
+
+    }
+
+    .gallery:hover>img:nth-of-type(4) {
+      transform: rotate(180deg);
+    }
+
+    .gallery>img:nth-of-type(3) {
+      transform: translate(0px, -10px) rotate(90deg);
+      /* z-index: 0; */
+
+    }
+
+    .gallery:hover>img:nth-of-type(3) {
+      transform: translate(0px, 0px) rotate(90deg);
+    }
+
+    .gallery>img:nth-of-type(2) {
+      transform: translateY(10px) rotate(270deg);
+      /* z-index: 0; */
+    }
+
+    .gallery:hover>img:nth-of-type(2) {
+      transform: translateY(0px) rotate(270deg);
+
+    }
+
+    .gallery>img:nth-of-type(1) {
+      transform: translate(-10px, 0px);
+    }
+
+    .gallery:hover>img:nth-of-type(1) {
+      transform: rotate(0);
+    }
+
+
+    /* img  {
+        width: 100%;
+        height: 100%;
+        /* transform: rotate(180deg); */
+    /* border-radius: 50%;
+        object-fit: cover; */
+    /* margin: 0px 5px; */
+    /* } */
+
+        body {
+            width: 100%;
+        }
+
+        #body1 {
+            background: linear-gradient(45deg, rgb(202, 147, 147), rgb(92, 92, 151), rgb(120, 120, 120), rgb(120, 157, 120));
+            width: 100%;
+            height: 100vh;
+
+        }
+        #main1{
+            width: 100%;
+            height: 100vh;
+            /* background-color: black; */
+        }
+        .container {
+            width: 95%;
+            height: 100vh;
+            margin: auto;
+            /* border: 1px solid black; */
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+
+            >figure {
+                /* border: 7px solid red; */
+                width: 600px;
+                height: 400px;
+
+                /* overflow: hidden; */
+                >img {
+                    object-fit: cover;
+                    border-radius: 3px;
+                    width: 100%;
+                    height: 100%;
+
+                }
+            }
+
+        }
+
+        .img {
+
+            /* display: none; */
+            /* object-fit: contain; */
+            animation: reza 1.5s;
+
+        }
+
+        @keyframes reza {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+
+        }
+
+        .icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            >i {
+                margin: 0px 10px;
+                cursor: pointer;
+                /* position: absolute; */
+
+
+            }
+
+            #prev {
+                /* position: absolute; */
+                top: 47%;
+                left: 0;
+                background-color: black;
+                color: white;
+                padding: 15px;
+                font-size: 25px;
+                margin: 0px 20px;
+                border-radius: 3px;
+                transition: .2s;
+                line-height: 0;
+
+                &:hover {
+                    background-color: rgba(255, 255, 255, 0.84);
+                    color: black;
+                    outline: 2px solid black;
+                    transition: .4s;
+                }
+            }
+
+            #next {
+                /* position: absolute; */
+                top: 47%;
+                right: 0;
+                background-color: black;
+                color: white;
+                padding: 15px;
+                font-size: 25px;
+                margin: 0px 20px;
+                border-radius: 3px;
+                transition: .4s;
+                line-height: 0;
+
+                &:hover {
+                    background-color: rgba(255, 255, 255, 0.847);
+                    color: black;
+                    outline: 2px solid black;
+                }
+            }
+        }
+
+        .bars {
+            display: flex;
+            justify-content: center;
+
+            >.bar {
+                margin: 0px 5px;
+                width: 15px;
+                height: 15px;
+                background-color: rgb(216, 147, 216);
+                border-radius: 50%;
+            }
+        }
+
+        .active {
+            width: 15px;
+            height: 15px;
+            background-color: blue;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class=" " id="body1">
+        <div class="container position-relative  p-0 col-12 d-flex justify-content-center flex-wrap"> 
+            <figure class="img anime col-8">
+                <img src="img/eb3aab0d6b60370ec65607d7122ab7df.jpg" alt="">
+            </figure>
+            <figure class="img anime col-8">
+                <img src="img/Most-Expensive-Whiskies-0-Hero-1074x711.jpg">
+
+            </figure>
+
+            <figure class="img anime col-8">
+                <img src="img/5518724.jpg" alt="">
+            </figure>
+            <figure class="img anime col-8">
+                <img src="img/white-wine-glasses.webp" alt="">
+            </figure>
+            <figure class="img anime col-8">
+                <img src="img/wp4775833.jpg" alt="">
+            </figure>
+            <figure class="img anime col-8">
+                <img src="img/rum-vs-whiskey-1024x576.webp" alt="">
+            </figure>
+            <div class="col-12 icons mt-4">
+                <i class="icon-left-big" id="prev" onclick="reza(-1)"></i>
+                <i class="icon-right-big " id="next" onclick="reza(1)"></i>
+            </div>
+        </div>
+
+    </div>
+    <main id="main1">
+        <div class="container mx-auto">
+            <div class="darkmode">
+                <h1 class="uppercase mx-auto  text-center text-4xl font-bold py-10" id="h1">javascript dark theme</h1>
+                <div class=" text-center py-24 mx-auto">
+                    <i class="icon-sun-filled text-6xl cursor-pointer" id="i11"> </i>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="bg-gradient-to-r from-[#6b7fff] to-white">
+        <div class="container flex justify-center items-center min-h-[100vh] w-[100%] mx-auto">
+          <div
+            class="sm480:w-[70%] md:w-[50%] sm480:h-[70vh] lg:h-[80vh] bg-[#5d5ded] flex items-center justify-center flex-col rounded-md">
+            <h1 class="uppercase font-bold text-2xl md:text-4xl text-white">
+              cornometr
+            </h1>
+            <p class="text-4xl my-5">
+              <span class="font-bold text-4xl" id="second">00 </span>:
+              <span id="tens" class="font-bold text-4xl">00</span>
+            </p>
+            <div class="flex justify-center sm480:flex-col md:flex-row">
+              <button
+                class="p-3 bg-blue-800 hover:bg-white hover:text-blue-800 text-white transition rounded-md text-2xl font-medium uppercase"
+                id="btn-start">
+                start
+              </button>
+              <button
+                class="p-3 mx-3 sm480:my-3 md:my-0 bg-blue-800 hover:bg-white hover:text-blue-800 text-white transition rounded-md text-2xl font-medium uppercase"
+                id="btn-stop">
+                stop
+              </button>
+              <button
+                class="p-3 bg-blue-800 hover:bg-white hover:text-blue-800 text-white transition rounded-md text-2xl font-medium uppercase"
+                id="btn-reset">
+                reset
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-full h-screen bg-gradient-to-r from-red-600 to-blue-400 flex justify-center items-center" id="div0">
+        <div class="w-96   p-5  bg-black shadow-xl" style="height: 80vh;" id="div1">
+         <div class="w-full h-[30vh] ">
+            <div class="w-[190px] h-[190px] bg-red-600  mx-auto rounded-full relative  before:content-[''] before:w-[170px] before:h-[170px] before:flex before:mx-auto before:rounded-full before:left-[50%] before:top-[50%] before:translate-x-[-50%] before:translate-y-[-50%] before:bg-white before:absolute after:absolute after:content-[''] after:left-[50%] after:top-[50%] after:translate-x-[-50%] after:translate-y-[-50%] after:w-[15px] after:h-[15px] after:rounded-full after:bg-black">
+                <div id="hr" class="hidden absolute w-1 h-9 bg-black left-[50%] top-[32%] rounded-md translate-x-[-50%] origin-bottom   translate-y-[-50%]"></div>
+                <div id="min" class=" hidden absolute w-1 h-14 bg-red-500 left-[50%] top-[22%] rounded-md translate-x-[-50%] origin-bottom   translate-y-[-50%]"></div>
+                <div id="sec" class="hidden absolute w-1 h-20 bg-green-500 left-[50%] top-[9%] rounded-md translate-x-[-50%] origin-bottom   translate-y-[-50%]"></div>
+                <h2 id="ampm" class="text-md h223 text-black uppercase font-black absolute left-[50%] top-[80%] translate-x-[-50%]">am</h2>
+                
+            </div>
+            <div class="w-full  text-white calcus flex mt-6 justify-center text-2xl font-black">
+                <h2 class="h223">00</h2><span>:</span><h2 class="h223">00</h2><span>:</span><h2 class="h223">00</h2>
+            </div>
+            <div class="w-full xsm:h-[17vh] xl:h-[18vh]  text-white calcus text-center text-2xl p-6 ">
+                <h1 class="uppercase font-black">Tehran</h1>
+                <h2 class="uppercase mt-3 h223" id="h4">sunday</h2>
+            </div>
+            <div class="flex justify-center ">
+                <button class="flex justify-center  "><i class="bi bi-brightness-high-fill text-[yellow] text-4xl" id="i12"></i></button>
+            </div>
+
+         </div>   
+        
+        </div>
+    </div>
+    <main class="salam">
+        <div class="gallery">
+          <img src="img/buyonline-ptb-background-scaled.jpg" alt="" />
+    
+          <img src="img/contact-ptb-background-scaled.jpg" alt="" />
+    
+          <img src="img/blog-ptb-background-scaled.jpg" alt="" />
+          <img src="img/dessert-wine-101-400x292.jpg" alt="" />
+        </div>
+      </main>
+      <div class="bg-gradient-to-r from-[#633232] to-[#396024] relative">
+        <div class="container sblock mx-auto flex justify-center items-center h-[100vh]">
+            <div
+                class="w-[50%] xsm:w-[70%] sm:w-[70%] md:w-[65%] lg:w-[50%] h-[50vh] bg-[#0000008e] rounded-lg flex  items-center justify-center">
+                <div class=" text-white ">
+                    <button
+                        class="p-3 bg-blue-400  text-white text-xl font-normal hover:bg-white hover:text-blue-400 border-2 border-[#0000ff00] hover:border-blue-400 uppercase rounded-lg transition duration-700 "
+                        onclick="ali()"> click</button>
+                </div>
+                <div class=" text-white w-[20%] mx-4 rounded-xl">
+                    <figure class="w-[100%]">
+                        <img src="img/images.jpeg" class="rounded-xl" alt="">
+                    </figure>
+                </div>
+            </div>
+            <!-- <div class="w-[100%] h-[100vh] absolute top-0 left-0 bg-[#0000005d]"></div> -->
+        </div>
+    <!-- <script src="js/bootstrap.min.js"></script> -->
+
+    <script>
+        let index = 0
+        reza(index)
+        function reza(i) {
+            index += i
+            images = document.getElementsByClassName('img');
+            bars = document.getElementsByClassName('bar')
+            for (i = 0; i < bars.length; i++) {
+                bars[i].className = bars[i].className.replace('active', '')
+            }
+            for (i = 0; i < images.length; i++) {
+                images[i].style.display = 'none'
+                // console.log(image[3]);
+            }
+            if (index > images.length - 1) {
+                index = 0
+            } else if (index < 0) {
+                index = images.length - 1
+            }
+            images[index].style.display = 'block'
+            // bars[index].className += 'active'
+
+        }
+        let i = 1
+        let main = document.getElementById('main1')
+        let h1 = document.getElementById('h1')
+        document.getElementById('i11').addEventListener('click', (e) => {
+            console.log(i);
+            if (i % 2) {
+                main.style.backgroundColor = 'black'
+                main.style.transition = 'all 1s'
+                e.target.classList.add('icon-moon-3')
+                e.target.style.transition = 'all 1s'
+                h1.style.color = 'white'
+                e.target.classList.remove('icon-sun-filled')
+                e.target.style.color = 'white'
+            } else {
+                e.target.classList.remove('icon-moon-3')
+                main.style.backgroundColor = 'white'
+                e.target.classList.add('icon-sun-filled')
+                e.target.style.color = 'black'
+                h1.style.color = 'black'
+                h1.style.transition = 'all 1s'
+            }
+            i++
+        })  
+        let start = document.getElementById("btn-start");
+    let stop = document.getElementById("btn-stop");
+    let reset = document.getElementById("btn-reset");
+    let second = document.getElementById("second");
+    let tens = document.getElementById("tens");
+    let isActive = false
+    start.addEventListener("click", () => {
+      if (!isActive) {
+        // 
+        s = setInterval(hosein, 10);
+        isActive = true; // 
+      }
+    });
+    stop.addEventListener("click", () => {
+      clearInterval(s);
+      isActive = false
+    });
+    reset.addEventListener("click", () => {
+      tend = 0;
+      tens.innerHTML = "00";
+      seconde = 0;
+      second.innerHTML = "00";
+      isActive = false
+      clearInterval(s);
+    });
+    let tend = 0;
+    let seconde = 0;
+    hosein = () => {
+      tend++;
+      tens.innerHTML = tend;
+      if (tend < 10) {
+        tens.innerHTML = "0" + tend;
+      }
+      if (tend > 98) {
+        tend = 0;
+        seconde++;
+        second.innerHTML = seconde;
+
+        if (seconde < 10) {
+          second.innerHTML = "0" + seconde;
+        }
+      }
+    };
+    let hour = document.getElementById('hr')
+    let min = document.getElementById('min')
+    let sec = document.getElementById('sec')
+    let week=['SUNDAY','MONDAY','TUESDAY','WEDENSDAY','THURSDAY','FRIDAY','SATURDAY']
+    let date = new Date()
+
+    let day = date.getDay()
+   let h2= document.getElementById('h4')
+    h2.innerText=week[day]
+   let i21=  document.getElementById('i12')
+   const div1 = document.getElementById('div0')
+   const div2 = document.getElementById('div1')
+   let div3 =document.querySelectorAll('.calcus')
+   let ampm = document.getElementById('ampm')
+   h22 = document.getElementsByClassName('h223')
+   let hours = date.getHours()
+   setInterval(()=>{
+    let date = new Date()
+    let hours = date.getHours()
+   let minutes =date.getMinutes()
+   let seconds = date.getSeconds()
+    h22[1].innerHTML=`${hours}`
+   h22[2].innerText=`${minutes}`
+   h22[3].innerHTML=`${seconds}`
+   let hourT = 30*hours+minutes/2
+   let minuteT = 6*minutes
+   let secondT= 6 *seconds
+   if(hours<10){
+    h22[1].innerHTML='0'+hours
+   }
+   if(minutes<10){
+    h22[2].innerHTML='0'+minutes
+   }
+   if(seconds<10){
+    h22[3].innerHTML='0'+seconds
+   }
+   hour.style.transform=`rotate(${hourT}deg)`
+   hour.style.transformOrigin='bottom center'
+   min.style.transform=`rotate(${minuteT}deg)`
+   sec.style.transform=`rotate(${secondT}deg)`
+   hour.style.display='flex'
+   min.style.display='flex'
+   sec.style.display='flex'
+   },1000)
+   
+   if(hours>12){
+    ampm.innerHTML='PM'
+   }else{
+    ampm.innerHTML='AM'
+   }
+   console.log(div3);
+   i21.addEventListener('click',()=>{
+    classs=i21.classList.toggle('bi-moon-fill')
+    if(classs==true){
+        div1.style.backgroundImage='linear-gradient(to right , black , white) '
+        div2.classList.remove('bg-black')
+        div2.classList.add('bg-white')
+        i21.style.color='black'
+        div3.forEach(val=>{
+            val.classList.remove('text-white')
+            val.classList.add('text-black')
+        })
+    }
+    else{
+        div1.style.backgroundImage='linear-gradient(to right , white , black) '
+        div1.style.backgroundColor='white'
+        div2.classList.remove('bg-white')
+        div2.classList.add('bg-black')
+        i21.style.color='yellow'
+        div3.forEach(val=>{
+            val.classList.remove('text-black')
+            val.classList.add('text-white')
+        })    }
+   })
+    let xw = document.createElement('div')
+        xw.setAttribute('style', 'width:100%; height:100vh; position:absolute; top:0; left:-100%; background-color:rgba(255, 255, 255, 0.15); display:flex; justify-content:center; align-items:center;')
+
+        let conts = document.getElementsByClassName('sblock')[0]
+        
+        conts.appendChild(xw)
+        let y = document.createElement('div')
+        y.className = 'text-white bg-black  xsm:w-[70%] sm:w-[65%] md:w-[60%] h-[50vh] rounded-lg p-5 relative'
+        let paragraph = document.createElement('p')
+        let h8 = document.createElement('h2')
+        let button = document.createElement('button')
+        console.log(xw);
+        button.addEventListener('click', () => {
+            xw.style.left = '-100%'
+        })
+        button.innerHTML = 'close'
+        button.className = 'text-black text-xl bg-white p-4 border-2 rounded-lg uppercase border-[#00000000] hover:bg-black duration-700 hover:text-white hover:border-2 hover:border-white transition absolute bottom-5 right-5'
+        h8.className = 'xsm:text-lg md:text-xl lg:text-2xl mt-5 font-black  '
+        h8.innerHTML = 'please follow me and subscribed in youtube thanks'
+        paragraph.innerHTML = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas quia delectus voluptatum nemo doloremque asperiores`
+        paragraph.className = 'text-white  capitalize'
+        xw.appendChild(y)
+        y.appendChild(paragraph)
+        y.appendChild(h8)
+        y.appendChild(button)
+        //    console.log(z);
+        console.log(y);
+        console.log(xw);
+        function ali() {
+            xw.style.left = '0'
+            xw.style.transition = '1s'
+        }
+    </script>
+</body>
+
+</html>
